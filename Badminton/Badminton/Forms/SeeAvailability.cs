@@ -57,7 +57,6 @@ namespace Badminton.Forms
             choice.ForeColor = Color.Black;
         }
 
-
         private void SelectCourtGoToCreateBooking(object sender, EventArgs e)
         {
             int collisionsFound = CheckingForCollisions(Court.placeholderCourt);
@@ -75,7 +74,7 @@ namespace Badminton.Forms
             {
                 //Fixa en ny property med en CourtNumber
                 //Spara en placeholder court med ett värde som är collisionsFound +1
-                HelperMethods.GoToMethod(new Form1());
+                HelperMethods.GoToMethod(new MainMenu());
             }
         }
 

@@ -16,18 +16,11 @@ namespace Badminton.Classes
         public int CortNumber { get; set; }
 
         public static Court placeholderCourt;
+
         public static int TennisCourt = 2;
         public static int SquashCourt = 2;
         public static int BadmintonCourt = 3;
 
-        public Court(DateTime bookingDate, DateTime startTime, DateTime endTime, string getType)
-        {
-            BookingDate = bookingDate;
-            StartTime = startTime;
-            EndTime = endTime;
-            Type = GetCourtType(getType);
-        }
-        
         public Court(DateTime bookingDate, DateTime startTime, DateTime endTime, string getType, int courtNumber)
         {
             BookingDate = bookingDate;
@@ -36,7 +29,6 @@ namespace Badminton.Classes
             Type = GetCourtType(getType);
             CortNumber = courtNumber;
         }
-
 
         private string GetCourtType(string getType)
         {
@@ -52,15 +44,15 @@ namespace Badminton.Classes
 
         public static bool IsCourtAvailable(string courtType, int collisionsFound)
         {
-            if (courtType == "Tennis" && TennisCourt >= collisionsFound)
+            if (courtType == "Tennis" && TennisCourt > collisionsFound)
             {
                 return true;
             }
-            else if (courtType == "Squash" && SquashCourt >= collisionsFound)
+            else if (courtType == "Squash" && SquashCourt > collisionsFound)
             {
                 return true;
             }
-            else if (courtType == "Badminton" && BadmintonCourt >= collisionsFound)
+            else if (courtType == "Badminton" && BadmintonCourt > collisionsFound)
             {
                 return true;
             }
@@ -74,8 +66,12 @@ namespace Badminton.Classes
             placeholderCourt = court;
         }
 
-       
-        
+        public static Court SetPlaceholderCourtWithCourtNumber(int courtID)
+        {
+            placeholderCourt.CortNumber = ++courtID;
+            return placeholderCourt;
+        }
+
         public static Court GetPlaceholderCourt()
         {
             return placeholderCourt;
@@ -85,7 +81,7 @@ namespace Badminton.Classes
         
         public static void ResetPlaceholderCourt()
         {
-            Court court = new Court(DateTime.Now, DateTime.Now, DateTime.Now, null);
+            Court court = new Court(DateTime.Now, DateTime.Now, DateTime.Now, null, 0);
             placeholderCourt = court;
         }
         #endregion

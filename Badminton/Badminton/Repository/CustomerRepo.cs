@@ -19,8 +19,6 @@ namespace Badminton.Repository
             File.AppendAllText($@"{currentPath}\CustomerRepo.json", jsonString + "\n");
         }
 
-
-
         static public List<Customer> ReadCustomerRepo()
         {
 

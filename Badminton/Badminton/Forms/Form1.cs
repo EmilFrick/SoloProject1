@@ -29,7 +29,7 @@ namespace Badminton.Forms
                 if (placeholderCourt.Type != "uppgifter saknas")
                 {
                     DisplayPlaceholderCourt();
-                    ShowCourtPlaceHolder.Show();
+                    txtCourtDetails2.Show();
                 }
             }
 
@@ -47,10 +47,11 @@ namespace Badminton.Forms
 
         private void DisplayPlaceholderCourt()
         {
-            ShowCourtPlaceHolder.GameType = $"{Court.placeholderCourt.Type}";
-            ShowCourtPlaceHolder.BookingDate= $"{Court.placeholderCourt.BookingDate.ToString("d MMMM")}";
-            ShowCourtPlaceHolder.StartingTime= $"{Court.placeholderCourt.StartTime.ToString("H:mm")}";
-            ShowCourtPlaceHolder.EndingTime= $"{Court.placeholderCourt.EndTime.ToString("H:mm")}";
+            txtCourtDetails2.GameType = $"{Court.placeholderCourt.Type}";
+            txtCourtDetails2.BookingDate = $"{Court.placeholderCourt.BookingDate.ToString("d MMMM")}";
+            txtCourtDetails2.StartingTime = $"{Court.placeholderCourt.StartTime.ToString("H:mm")}";
+            txtCourtDetails2.EndingTime = $"{Court.placeholderCourt.EndTime.ToString("H:mm")}";
+            txtCourtDetails2.CourtNumber = $"Bana {Court.placeholderCourt.CortNumber}";
         }
 
         private void CreateBookingGoToSelectCustomer(object sender, EventArgs e)

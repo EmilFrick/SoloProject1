@@ -24,7 +24,7 @@ namespace Badminton.Forms
         private string _bookingDate;
         private string _startingTime;
         private string _endingTime;
-
+        private string _courtNumber;
 
 
         [Category("Custom Props")]
@@ -53,6 +53,13 @@ namespace Badminton.Forms
         {
             get { return _endingTime; }
             set { _endingTime = value; lblCourtTimeTo.Text = value; }
+        }
+        
+        [Category("Custom Props")]
+        public string CourtNumber
+        {
+            get { return _courtNumber; }
+            set { _courtNumber = value; lblCourtNumber.Text = value; }
         }
 
         #endregion

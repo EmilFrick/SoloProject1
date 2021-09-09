@@ -33,10 +33,10 @@ namespace Badminton.Forms
             this.btnCourtBooking = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlCourtShowPlaceHolder = new System.Windows.Forms.Panel();
-            this.ShowCourtPlaceHolder = new Badminton.Forms.txtCourtDetails();
             this.pnlCustomerShowPlaceholder = new System.Windows.Forms.Panel();
-            this.showCustomerInfo1 = new Badminton.Forms.ShowCustomerInfo();
             this.btnBackToMainMenu2 = new Badminton.Forms.btnBackToMainMenu();
+            this.showCustomerInfo1 = new Badminton.Forms.ShowCustomerInfo();
+            this.txtCourtDetails2 = new Badminton.Forms.txtCourtDetails();
             this.pnlCourtShowPlaceHolder.SuspendLayout();
             this.pnlCustomerShowPlaceholder.SuspendLayout();
             this.SuspendLayout();
@@ -91,25 +91,11 @@ namespace Badminton.Forms
             // 
             // pnlCourtShowPlaceHolder
             // 
-            this.pnlCourtShowPlaceHolder.Controls.Add(this.ShowCourtPlaceHolder);
+            this.pnlCourtShowPlaceHolder.Controls.Add(this.txtCourtDetails2);
             this.pnlCourtShowPlaceHolder.Location = new System.Drawing.Point(183, 142);
             this.pnlCourtShowPlaceHolder.Name = "pnlCourtShowPlaceHolder";
             this.pnlCourtShowPlaceHolder.Size = new System.Drawing.Size(229, 128);
             this.pnlCourtShowPlaceHolder.TabIndex = 8;
-            // 
-            // ShowCourtPlaceHolder
-            // 
-            this.ShowCourtPlaceHolder.BackColor = System.Drawing.Color.Ivory;
-            this.ShowCourtPlaceHolder.BookingDate = null;
-            this.ShowCourtPlaceHolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ShowCourtPlaceHolder.EndingTime = null;
-            this.ShowCourtPlaceHolder.GameType = null;
-            this.ShowCourtPlaceHolder.Location = new System.Drawing.Point(0, 0);
-            this.ShowCourtPlaceHolder.Name = "ShowCourtPlaceHolder";
-            this.ShowCourtPlaceHolder.Size = new System.Drawing.Size(229, 128);
-            this.ShowCourtPlaceHolder.StartingTime = null;
-            this.ShowCourtPlaceHolder.TabIndex = 0;
-            this.ShowCourtPlaceHolder.Visible = false;
             // 
             // pnlCustomerShowPlaceholder
             // 
@@ -118,6 +104,13 @@ namespace Badminton.Forms
             this.pnlCustomerShowPlaceholder.Name = "pnlCustomerShowPlaceholder";
             this.pnlCustomerShowPlaceholder.Size = new System.Drawing.Size(229, 128);
             this.pnlCustomerShowPlaceholder.TabIndex = 9;
+            // 
+            // btnBackToMainMenu2
+            // 
+            this.btnBackToMainMenu2.Location = new System.Drawing.Point(247, 278);
+            this.btnBackToMainMenu2.Name = "btnBackToMainMenu2";
+            this.btnBackToMainMenu2.Size = new System.Drawing.Size(32, 32);
+            this.btnBackToMainMenu2.TabIndex = 10;
             // 
             // showCustomerInfo1
             // 
@@ -135,12 +128,20 @@ namespace Badminton.Forms
             this.showCustomerInfo1.TabIndex = 0;
             this.showCustomerInfo1.Visible = false;
             // 
-            // btnBackToMainMenu2
+            // txtCourtDetails2
             // 
-            this.btnBackToMainMenu2.Location = new System.Drawing.Point(247, 278);
-            this.btnBackToMainMenu2.Name = "btnBackToMainMenu2";
-            this.btnBackToMainMenu2.Size = new System.Drawing.Size(32, 32);
-            this.btnBackToMainMenu2.TabIndex = 10;
+            this.txtCourtDetails2.BackColor = System.Drawing.Color.Ivory;
+            this.txtCourtDetails2.BookingDate = null;
+            this.txtCourtDetails2.CourtNumber = null;
+            this.txtCourtDetails2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtCourtDetails2.EndingTime = null;
+            this.txtCourtDetails2.GameType = null;
+            this.txtCourtDetails2.Location = new System.Drawing.Point(0, 0);
+            this.txtCourtDetails2.Name = "txtCourtDetails2";
+            this.txtCourtDetails2.Size = new System.Drawing.Size(229, 128);
+            this.txtCourtDetails2.StartingTime = null;
+            this.txtCourtDetails2.TabIndex = 0;
+            this.txtCourtDetails2.Visible = false;
             // 
             // Form1
             // 
@@ -171,8 +172,8 @@ namespace Badminton.Forms
         private System.Windows.Forms.Panel pnlCourtShowPlaceHolder;
         private txtCourtDetails txtCourtDetails1;
         private System.Windows.Forms.Panel pnlCustomerShowPlaceholder;
-        private txtCourtDetails ShowCourtPlaceHolder;
         private ShowCustomerInfo showCustomerInfo1;
         private btnBackToMainMenu btnBackToMainMenu2;
+        private txtCourtDetails txtCourtDetails2;
     }
 }

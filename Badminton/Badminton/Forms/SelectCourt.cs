@@ -66,13 +66,12 @@ namespace Badminton.Forms
             if (choice != null)
             {
                 Court setPlaceholderCourt = new Court(dtpBookingDate.Value, dtpBookingTimeFrom.Value,
-                    dtpBookingTimeTo.Value, choice.Text);
+                    dtpBookingTimeTo.Value, choice.Text, 0);
 
                 Court.SetPlaceholderCourt(setPlaceholderCourt);
 
                 int collisionsFound = CheckingForCollisions(Court.placeholderCourt);
                 bool courtIsAvailable = Court.IsCourtAvailable(Court.placeholderCourt.Type, collisionsFound);
-
 
                 if (!courtIsAvailable)
                 {
@@ -80,11 +79,9 @@ namespace Badminton.Forms
                 }
                 else
                 {
-                    
+                    Court.placeholderCourt = Court.SetPlaceholderCourtWithCourtNumber(collisionsFound);
                     HelperMethods.GoToMethod(new Form1());
                 }
-
-                HelperMethods.GoToMethod(new Form1());
             }
             else
             {

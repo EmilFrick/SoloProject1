@@ -25,7 +25,7 @@ namespace Badminton.Repository
         {
 
             string currentPath = Directory.GetCurrentDirectory();
-            StreamReader sr = new StreamReader($@"{currentPath}\BookingRepo.json");
+            StreamReader sr = new StreamReader($@"{currentPath}\BookingsRepo.json");
             string jsonString = "";
             List<Booking> jsonBookingList = new List<Booking>();
 
@@ -65,15 +65,15 @@ namespace Badminton.Repository
 
             foreach (var item in bookingsForTheDay)
             {
-                if (startingValue<item.Court.StartTime && endingValue>item.Court.StartTime)
+                if (startingValue<=item.Court.StartTime && endingValue>=item.Court.StartTime)
                 {
                     occupiedBy++;
                 }
-                else if (startingValue>item.Court.StartTime&&endingValue<item.Court.EndTime)
+                else if (startingValue>=item.Court.StartTime&&endingValue<=item.Court.EndTime)
                 {
                     occupiedBy++;
                 }
-                else if (startingValue>item.Court.StartTime&&endingValue>item.Court.EndTime)
+                else if (startingValue>=item.Court.StartTime&&endingValue>=item.Court.EndTime)
                 {
                     occupiedBy++;
                 }
