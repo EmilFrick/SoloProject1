@@ -1,5 +1,4 @@
 ﻿using Badminton.Classes;
-using Badminton.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,19 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Badminton.Repository;
 
 namespace Badminton.Forms
 {
-    public partial class SelectCourt : Form
+    public partial class SeeAvailability : Form
     {
-        public SelectCourt()
+        public SeeAvailability()
         {
             InitializeComponent();
 
         }
         Label choice;
-
-        #region LabelStuff
 
         private void MarkSelection(object sender, EventArgs e)
         {
@@ -30,6 +28,7 @@ namespace Badminton.Forms
             {
                 return;
             }
+            
             if (choice == null)
             {
                 clickedlabel.Margin = new Padding(3, 5, 3, 5); //was (3, 10, 3, 10);
@@ -58,51 +57,41 @@ namespace Badminton.Forms
             choice.ForeColor = Color.Black;
         }
 
-        #endregion
-
-
         private void SelectCourtGoToCreateBooking(object sender, EventArgs e)
         {
-            if (choice != null)
-            {
-                Court setPlaceholderCourt = new Court(dtpBookingDate.Value, dtpBookingTimeFrom.Value,
-                    dtpBookingTimeTo.Value, choice.Text);
+            int collisionsFound = CheckingForCollisions(Court.placeholderCourt);
+            bool courtIsAvailable = Court.IsCourtAvailable(Court.placeholderCourt.Type, collisionsFound);
 
-                Court.SetPlaceholderCourt(setPlaceholderCourt);
-
-                int collisionsFound = CheckingForCollisions(Court.placeholderCourt);
-                bool courtIsAvailable = Court.IsCourtAvailable(Court.placeholderCourt.Type, collisionsFound);
-
-
-                if (!courtIsAvailable)
-                {
-                    MessageBox.Show("Tyvärr finns det ingen bana tillgänglig för den här tiden");
-                }
-                else
-                {
-                    
-                    HelperMethods.GoToMethod(new Form1());
-                }
-
-                HelperMethods.GoToMethod(new Form1());
-            }
-            else
+            if (choice == null)
             {
                 MessageBox.Show("Något Saknas!");
             }
+            if (!courtIsAvailable)
+            {
+                MessageBox.Show("Tyvärr finns det ingen bana tillgänglig för den här tiden");
+            }
+            else
+            {
+                //Fixa en ny property med en CourtNumber
+                //Spara en placeholder court med ett värde som är collisionsFound +1
+                HelperMethods.GoToMethod(new MainMenu());
+            }
         }
-
 
         private int CheckingForCollisions(Court checkCourt)
         {
             List<Booking> listWithBookings = new List<Booking>();
             listWithBookings = BookingRepository.ReadBookingRepo();
             listWithBookings = BookingRepository.GetBookingsForSpecificDayAndActivity(listWithBookings,
-                                    checkCourt.BookingDate, checkCourt.Type);
+                                    checkCourt.BookingDate,checkCourt.Type);
             int howManyCollisions = BookingRepository.IsItVacant(listWithBookings,
                                     checkCourt.StartTime, checkCourt.EndTime);
             return howManyCollisions;
         }
 
+        private void CheckAvailabilityGoToMainMenu(object sender, EventArgs e)
+        {
+            HelperMethods.GoToMethod(new MainMenu());
+        }
     }
 }
