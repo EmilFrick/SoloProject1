@@ -52,6 +52,7 @@
     <Compile Include="Classes\Booking.cs" />
     <Compile Include="Classes\Court.cs" />
     <Compile Include="Classes\Customer.cs" />
+    <Compile Include="Classes\Day.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

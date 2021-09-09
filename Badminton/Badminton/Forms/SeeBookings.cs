@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Badminton.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Badminton.Repository;
 
 namespace Badminton.Forms
 {
@@ -25,6 +27,7 @@ namespace Badminton.Forms
             {
                 return;
             }
+
             if (choice == null)
             {
                 clickedlabel.BackColor = Color.Chocolate; //was Ivory
@@ -37,6 +40,7 @@ namespace Badminton.Forms
             RevertAtributes(choice);
             choice = clickedlabel;
         }
+
         private void GiveSelectionAtributes(Label clickedlabel)
         {
             clickedlabel.BackColor = Color.Chocolate; //was Ivory
@@ -48,6 +52,23 @@ namespace Badminton.Forms
             choice.BackColor = Color.Ivory;
             choice.ForeColor = Color.Black;
         }
-    }
+        private void SeeSelectionBooking(object sender, EventArgs e)
+        {
+            if (choice == null)
+            {
+                //Nothing happens.
+            }
+            else
+            {
+                List<Booking> listOfBookings = new List<Booking>();
+                listOfBookings = BookingRepository.ReadBookingRepo();
+                listOfBookings = BookingRepository.GenereateSelectionList(choice, listOfBookings);
+                //populera listan med värden
+                // börja med datum
+                //sätt props Och fånga värden.
+            }
 
+
+        }
+    }
 }
