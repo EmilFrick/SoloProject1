@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Badminton.Repository;
+using Badminton.Classes;
 
 namespace Badminton.Forms
 {
@@ -16,12 +17,25 @@ namespace Badminton.Forms
     {
         public SeeBookings()
         {
+            List<DateTime> currentWeek = new List<DateTime>();
+            currentWeek = Classes.Day.GenerateWeek();
             InitializeComponent();
+            lblToday.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(0));
+            lblDay2.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(1));
+            lblDay3.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(2));
+            lblDay4.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(3));
+            lblDay5.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(4));
+            lblDay6.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(5));
+            lblDay7.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(6));
         }
+
+
+
         Label choice;
+
+
         private void MarkLabel(object sender, EventArgs e)
         {
-
             Label clickedlabel = sender as Label;
             if (clickedlabel.BackColor == Color.Chocolate)
             {
@@ -63,12 +77,44 @@ namespace Badminton.Forms
                 List<Booking> listOfBookings = new List<Booking>();
                 listOfBookings = BookingRepository.ReadBookingRepo();
                 listOfBookings = BookingRepository.GenereateSelectionList(choice, listOfBookings);
-                //populera listan med värden
-                // börja med datum
-                //sätt props Och fånga värden.
+               
+                List<txtToFlowSeeBookings> listOfBookingTags = GenerateListOfBookingTags();
+                List<DateTime> currentWeek = Classes.Day.GenerateWeek();
+                
+                int counter = 0;
+                foreach (var weekDay in currentWeek)
+                {
+                    List<Booking> listByWeekday = BookingRepository.FetchCertainBookingsByDay(listOfBookings, weekDay);
+                    foreach (var booking in listByWeekday)
+                    {
+                        string tagStr = PopulateFlowItem(booking);
+                        FlowToday.ShowBooking = tagStr;
+                    }
+                    counter++;
+                }
             }
-
-
         }
+
+        private string PopulateFlowItem(Booking booking)
+        {
+            string gameType = booking.Court.Type.ToString().Substring(0, 1);
+            string courtID = booking.Court.CortNumber.ToString();
+            string fromTime = booking.Court.StartTime.ToString("HH");
+            string endTime = booking.Court.EndTime.ToString("HH");
+            string bookingText = $"{gameType}{courtID} {fromTime}-{endTime}";
+            return bookingText;
+        }
+
+        private List<txtToFlowSeeBookings> GenerateListOfBookingTags()
+        {
+            List<txtToFlowSeeBookings> listOfBookingTags = new List<txtToFlowSeeBookings> {FlowToday, FlowDay2,
+            FlowDay3, FlowDay4, FlowDay5, FlowDay6, FlowDay7};
+            return listOfBookingTags;
+        }
+
+
+
+
+
     }
 }

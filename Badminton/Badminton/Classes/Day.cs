@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Badminton.Classes
 {
-    class Day
+    public static class Day
     {
-        private DateTime Today { get; set; }
 
-        public Day(DateTime today)
+        public static DateTime GetDateTimeDayFromNow(int days)
         {
-            Today = DateTime.Now;
-        }
-
-        public DateTime GetDateTimeDayFromNow(int days)
-        {
-            DateTime myDay = Today.AddDays(days);
+            DateTime myDay = DateTime.Now.AddDays(days);
             return myDay;
         }
        
-        public string GetStrDay(DateTime getWeekday)
+        public static string GetStrDay(DateTime getWeekday)
         {
             string myWeekday = getWeekday.ToString("dddd");
             return myWeekday;
+        }
+
+        public static List<DateTime> GenerateWeek()
+        {
+            List<DateTime> myWeek = new List<DateTime>();
+            myWeek.Add(DateTime.Now);
+            for (int i = 1; i < 7; i++)
+            {
+            myWeek.Add(GetDateTimeDayFromNow(i));
+            }
+
+            return myWeek;
         }
     }
 }

@@ -29,28 +29,28 @@ namespace Badminton.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblBookingText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lblBookingText
             // 
-            this.label1.BackColor = System.Drawing.Color.Ivory;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "T1 (13-15)";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBookingText.BackColor = System.Drawing.Color.Ivory;
+            this.lblBookingText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblBookingText.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookingText.Location = new System.Drawing.Point(5, 5);
+            this.lblBookingText.Margin = new System.Windows.Forms.Padding(0);
+            this.lblBookingText.Name = "lblBookingText";
+            this.lblBookingText.Size = new System.Drawing.Size(75, 30);
+            this.lblBookingText.TabIndex = 0;
+            this.lblBookingText.Text = "T1 (13-15)";
+            this.lblBookingText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtToFlowSeeBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Chocolate;
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblBookingText);
             this.Name = "txtToFlowSeeBookings";
             this.Size = new System.Drawing.Size(85, 40);
             this.ResumeLayout(false);
@@ -59,6 +59,6 @@ namespace Badminton.Forms
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblBookingText;
     }
 }

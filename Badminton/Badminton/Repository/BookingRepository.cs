@@ -59,7 +59,22 @@ namespace Badminton.Repository
             }
             return updatedList;
         }
-
+        static public List<Booking> FetchCertainBookingsByDay(List<Booking> initialList, DateTime givenDay)
+        {
+            List<Booking> updatedList = new List<Booking>();
+            if (initialList.Count == 0)
+            {
+                return updatedList;
+            }
+            foreach (var item in initialList)
+            {
+                if (item.Court.BookingDate.Date == givenDay)
+                {
+                    updatedList.Add(item);
+                }
+            }
+            return updatedList;
+        }
         static public List<Booking> GetBookingsForSpecificDayAndActivity(List<Booking> initialList, DateTime givenDay, string courtType)
         {
             List<Booking> updatedList = new List<Booking>();

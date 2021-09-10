@@ -16,5 +16,17 @@ namespace Badminton.Forms
         {
             InitializeComponent();
         }
+
+        private string _showBooking;
+
+
+
+        [Category("Custom Props")]
+        public string ShowBooking
+        {
+            get { return _showBooking; }
+            set { _showBooking = value; lblBookingText.Text = value; }
+        }
+
     }
 }
