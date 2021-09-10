@@ -59,21 +59,9 @@ namespace Badminton.Forms
             this.lblSquashCourt2 = new System.Windows.Forms.Label();
             this.btnSeeSelectionBookings = new System.Windows.Forms.Button();
             this.btnBackToMainMenu1 = new Badminton.Forms.btnBackToMainMenu();
-            this.FlowDay7 = new Badminton.Forms.txtToFlowSeeBookings();
-            this.FlowDay6 = new Badminton.Forms.txtToFlowSeeBookings();
-            this.FlowDay5 = new Badminton.Forms.txtToFlowSeeBookings();
-            this.FlowDay4 = new Badminton.Forms.txtToFlowSeeBookings();
-            this.FlowDay3 = new Badminton.Forms.txtToFlowSeeBookings();
-            this.FlowDay2 = new Badminton.Forms.txtToFlowSeeBookings();
-            this.FlowToday = new Badminton.Forms.txtToFlowSeeBookings();
+            this.txtToFlowSeeBookings = new Badminton.Forms.txtToFlowSeeBookings();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.flwDay6.SuspendLayout();
-            this.flwDay5.SuspendLayout();
-            this.flwDay4.SuspendLayout();
-            this.flwDay3.SuspendLayout();
-            this.flwDay2.SuspendLayout();
-            this.flwDay1.SuspendLayout();
             this.flwDay0.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -125,7 +113,6 @@ namespace Badminton.Forms
             // 
             // flwDay6
             // 
-            this.flwDay6.Controls.Add(this.FlowDay7);
             this.flwDay6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwDay6.Location = new System.Drawing.Point(593, 36);
             this.flwDay6.Name = "flwDay6";
@@ -134,7 +121,6 @@ namespace Badminton.Forms
             // 
             // flwDay5
             // 
-            this.flwDay5.Controls.Add(this.FlowDay6);
             this.flwDay5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwDay5.Location = new System.Drawing.Point(495, 36);
             this.flwDay5.Name = "flwDay5";
@@ -143,7 +129,6 @@ namespace Badminton.Forms
             // 
             // flwDay4
             // 
-            this.flwDay4.Controls.Add(this.FlowDay5);
             this.flwDay4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwDay4.Location = new System.Drawing.Point(397, 36);
             this.flwDay4.Name = "flwDay4";
@@ -152,7 +137,6 @@ namespace Badminton.Forms
             // 
             // flwDay3
             // 
-            this.flwDay3.Controls.Add(this.FlowDay4);
             this.flwDay3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwDay3.Location = new System.Drawing.Point(299, 36);
             this.flwDay3.Name = "flwDay3";
@@ -161,7 +145,6 @@ namespace Badminton.Forms
             // 
             // flwDay2
             // 
-            this.flwDay2.Controls.Add(this.FlowDay3);
             this.flwDay2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwDay2.Location = new System.Drawing.Point(201, 36);
             this.flwDay2.Name = "flwDay2";
@@ -170,7 +153,6 @@ namespace Badminton.Forms
             // 
             // flwDay1
             // 
-            this.flwDay1.Controls.Add(this.FlowDay2);
             this.flwDay1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwDay1.Location = new System.Drawing.Point(103, 36);
             this.flwDay1.Name = "flwDay1";
@@ -245,7 +227,7 @@ namespace Badminton.Forms
             // 
             // flwDay0
             // 
-            this.flwDay0.Controls.Add(this.FlowToday);
+            this.flwDay0.Controls.Add(this.txtToFlowSeeBookings);
             this.flwDay0.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flwDay0.Location = new System.Drawing.Point(5, 36);
             this.flwDay0.Name = "flwDay0";
@@ -480,75 +462,15 @@ namespace Badminton.Forms
             this.btnBackToMainMenu1.Size = new System.Drawing.Size(32, 32);
             this.btnBackToMainMenu1.TabIndex = 2;
             // 
-            // FlowDay7
+            // txtToFlowSeeBookings
             // 
-            this.FlowDay7.BackColor = System.Drawing.Color.Chocolate;
-            this.FlowDay7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FlowDay7.Location = new System.Drawing.Point(3, 3);
-            this.FlowDay7.Name = "FlowDay7";
-            this.FlowDay7.ShowBooking = null;
-            this.FlowDay7.Size = new System.Drawing.Size(85, 40);
-            this.FlowDay7.TabIndex = 1;
-            // 
-            // FlowDay6
-            // 
-            this.FlowDay6.BackColor = System.Drawing.Color.Chocolate;
-            this.FlowDay6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FlowDay6.Location = new System.Drawing.Point(3, 3);
-            this.FlowDay6.Name = "FlowDay6";
-            this.FlowDay6.ShowBooking = null;
-            this.FlowDay6.Size = new System.Drawing.Size(85, 40);
-            this.FlowDay6.TabIndex = 1;
-            // 
-            // FlowDay5
-            // 
-            this.FlowDay5.BackColor = System.Drawing.Color.Chocolate;
-            this.FlowDay5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FlowDay5.Location = new System.Drawing.Point(3, 3);
-            this.FlowDay5.Name = "FlowDay5";
-            this.FlowDay5.ShowBooking = null;
-            this.FlowDay5.Size = new System.Drawing.Size(85, 40);
-            this.FlowDay5.TabIndex = 1;
-            // 
-            // FlowDay4
-            // 
-            this.FlowDay4.BackColor = System.Drawing.Color.Chocolate;
-            this.FlowDay4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FlowDay4.Location = new System.Drawing.Point(3, 3);
-            this.FlowDay4.Name = "FlowDay4";
-            this.FlowDay4.ShowBooking = null;
-            this.FlowDay4.Size = new System.Drawing.Size(85, 40);
-            this.FlowDay4.TabIndex = 1;
-            // 
-            // FlowDay3
-            // 
-            this.FlowDay3.BackColor = System.Drawing.Color.Chocolate;
-            this.FlowDay3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FlowDay3.Location = new System.Drawing.Point(3, 3);
-            this.FlowDay3.Name = "FlowDay3";
-            this.FlowDay3.ShowBooking = null;
-            this.FlowDay3.Size = new System.Drawing.Size(85, 40);
-            this.FlowDay3.TabIndex = 1;
-            // 
-            // FlowDay2
-            // 
-            this.FlowDay2.BackColor = System.Drawing.Color.Chocolate;
-            this.FlowDay2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FlowDay2.Location = new System.Drawing.Point(3, 3);
-            this.FlowDay2.Name = "FlowDay2";
-            this.FlowDay2.ShowBooking = null;
-            this.FlowDay2.Size = new System.Drawing.Size(85, 40);
-            this.FlowDay2.TabIndex = 1;
-            // 
-            // FlowToday
-            // 
-            this.FlowToday.BackColor = System.Drawing.Color.Chocolate;
-            this.FlowToday.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FlowToday.Location = new System.Drawing.Point(3, 3);
-            this.FlowToday.Name = "FlowToday";
-            this.FlowToday.ShowBooking = null;
-            this.FlowToday.Size = new System.Drawing.Size(85, 40);
-            this.FlowToday.TabIndex = 0;
+            this.txtToFlowSeeBookings.AttachedBooking = null;
+            this.txtToFlowSeeBookings.BackColor = System.Drawing.Color.Chocolate;
+            this.txtToFlowSeeBookings.Location = new System.Drawing.Point(3, 3);
+            this.txtToFlowSeeBookings.Name = "txtToFlowSeeBookings";
+            this.txtToFlowSeeBookings.ShowBooking = null;
+            this.txtToFlowSeeBookings.Size = new System.Drawing.Size(85, 40);
+            this.txtToFlowSeeBookings.TabIndex = 0;
             // 
             // SeeBookings
             // 
@@ -564,12 +486,6 @@ namespace Badminton.Forms
             this.Text = "SeeBookings";
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.flwDay6.ResumeLayout(false);
-            this.flwDay5.ResumeLayout(false);
-            this.flwDay4.ResumeLayout(false);
-            this.flwDay3.ResumeLayout(false);
-            this.flwDay2.ResumeLayout(false);
-            this.flwDay1.ResumeLayout(false);
             this.flwDay0.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -608,12 +524,6 @@ namespace Badminton.Forms
         private btnBackToMainMenu btnBackToMainMenu1;
         private System.Windows.Forms.Button btnSeeSelectionBookings;
         private System.Windows.Forms.Label lblBadmintonCourt3;
-        private txtToFlowSeeBookings FlowDay7;
-        private txtToFlowSeeBookings FlowDay6;
-        private txtToFlowSeeBookings FlowDay5;
-        private txtToFlowSeeBookings FlowDay4;
-        private txtToFlowSeeBookings FlowDay3;
-        private txtToFlowSeeBookings FlowDay2;
-        private txtToFlowSeeBookings FlowToday;
+        private txtToFlowSeeBookings txtToFlowSeeBookings;
     }
 }

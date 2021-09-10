@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Badminton.Classes
 {
-    class Booking
+    public class Booking
     {
         public Customer Customer { get; set; }
         public Court Court { get; set; }

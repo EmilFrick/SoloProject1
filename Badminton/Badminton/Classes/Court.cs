@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Badminton.Classes
 {
-    class Court
+    public class Court
     {
         public DateTime BookingDate { get; set; }
         public DateTime StartTime { get; set; }

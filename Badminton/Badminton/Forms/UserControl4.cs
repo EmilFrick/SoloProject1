@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Badminton.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,7 @@ namespace Badminton.Forms
         }
 
         private string _showBooking;
-
+        private Booking _attachedBooking;
 
 
         [Category("Custom Props")]
@@ -26,6 +27,13 @@ namespace Badminton.Forms
         {
             get { return _showBooking; }
             set { _showBooking = value; lblBookingText.Text = value; }
+        }
+
+        [Category("Custom Props")]
+        public Booking AttachedBooking
+        {
+            get { return _attachedBooking; }
+            set { _attachedBooking = value; }
         }
 
     }

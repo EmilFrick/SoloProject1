@@ -20,6 +20,7 @@ namespace Badminton.Forms
             List<DateTime> currentWeek = new List<DateTime>();
             currentWeek = Classes.Day.GenerateWeek();
             InitializeComponent();
+            ClearContainer();
             lblToday.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(0));
             lblDay2.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(1));
             lblDay3.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(2));
@@ -73,15 +74,66 @@ namespace Badminton.Forms
             else
             {
                 List<Booking> listOfBookings = new List<Booking>();
+                ClearContainer();
                 listOfBookings = BookingRepository.ReadBookingRepo7Days();
                 listOfBookings = BookingRepository.GenereateSelectionList(choice, listOfBookings);
-                
+                List<txtToFlowSeeBookings> listOfBookingTags = new List<txtToFlowSeeBookings>();
 
                 if (listOfBookings.Count != 0)  //If list contains no items, no idea to run this part of the program.
                 {
-                    PopulateFlowTagsForTheWeek(listOfBookings);
+                    List<txtToFlowSeeBookings> listOfFlowTags = PopulateFlowTagsForTheWeek(listOfBookings, listOfBookingTags);
+                    PopulateFlowLayOutPanelsWithTags(listOfFlowTags);
                 }
             }
+        }
+
+        private void ClearContainer()
+        {
+            flwDay0.Controls.Clear();
+            flwDay1.Controls.Clear();
+            flwDay2.Controls.Clear();
+            flwDay3.Controls.Clear();
+            flwDay4.Controls.Clear();
+            flwDay5.Controls.Clear();
+            flwDay6.Controls.Clear();
+        }
+
+        private void PopulateFlowLayOutPanelsWithTags(List<txtToFlowSeeBookings> listOfFlowTags)
+        {
+            List<FlowLayoutPanel> flowPanel = new List<FlowLayoutPanel> {flwDay0, flwDay1, flwDay2,
+            flwDay3, flwDay4, flwDay5, flwDay6};
+
+            int counter = 0;
+            foreach (var myPanel in flowPanel)
+            {
+                foreach (var myTag in listOfFlowTags)
+                {
+                    if (myTag.AttachedBooking!=null)
+                    {
+
+                        TimeSpan tagSpan = GetConditionalTimeSpan(myTag, counter);
+                        if (tagSpan == TimeSpan.Zero)
+                        {
+                            AssignLabelsToPanels(myTag, myPanel);
+                        }
+                    }
+                }
+                counter++;
+            }
+        }
+
+        private TimeSpan GetConditionalTimeSpan(txtToFlowSeeBookings myTag, int counter)
+        {
+            DateTime tagDate = myTag.AttachedBooking.Court.BookingDate.Date;
+            DateTime comparativeDate = DateTime.Today.Date.AddDays(counter);
+            TimeSpan tagSpan = tagDate - comparativeDate;
+            return tagSpan;
+
+        }
+
+        private void AssignLabelsToPanels(txtToFlowSeeBookings myTag, FlowLayoutPanel myPanel)
+        {
+            myPanel.Controls.Add(myTag);
         }
 
         private string GenerateFlowTagText(Booking booking)
@@ -94,9 +146,8 @@ namespace Badminton.Forms
             return bookingText;
         }
 
-        private void PopulateFlowTagsForTheWeek(List<Booking> listOfBookings)
+        private List<txtToFlowSeeBookings> PopulateFlowTagsForTheWeek(List<Booking> listOfBookings, List<txtToFlowSeeBookings> listOfBookingTags)
         {
-            List<txtToFlowSeeBookings> listOfBookingTags = GenerateListOfBookingTags();
             List<DateTime> currentWeek = Classes.Day.GenerateWeek();
 
             int counter = 0;
@@ -106,25 +157,22 @@ namespace Badminton.Forms
                 foreach (var booking in listByWeekday)
                 {
                     string tagStr = GenerateFlowTagText(booking);
-                    listOfBookingTags = PopulateFlowTagsWithNewText(listOfBookingTags, tagStr, counter);
+                    txtToFlowSeeBookings myBookingTag = new txtToFlowSeeBookings();
+                    myBookingTag = PopulateFlowTagsWithNewText(booking, tagStr, counter);
+                    listOfBookingTags.Add(myBookingTag);
                 }
                 counter++;
             }
-        }
-        private List<txtToFlowSeeBookings> PopulateFlowTagsWithNewText(List<txtToFlowSeeBookings> listOfBookingTags, string tagStr, int counter)
-        {
-            txtToFlowSeeBookings updatedTag = listOfBookingTags.ElementAt(counter);
-            listOfBookingTags.RemoveAt(counter);
-            updatedTag.ShowBooking = tagStr;
-            listOfBookingTags.Insert(counter, updatedTag);
             return listOfBookingTags;
+        }
+        private txtToFlowSeeBookings PopulateFlowTagsWithNewText(Booking booking, string tagStr, int counter)
+        {
+            txtToFlowSeeBookings myBookingTag = new txtToFlowSeeBookings();
+            myBookingTag.ShowBooking = tagStr;
+            myBookingTag.AttachedBooking = booking;
+            return myBookingTag;
         }
 
-        private List<txtToFlowSeeBookings> GenerateListOfBookingTags()
-        {
-            List<txtToFlowSeeBookings> listOfBookingTags = new List<txtToFlowSeeBookings> {FlowToday, FlowDay2,
-            FlowDay3, FlowDay4, FlowDay5, FlowDay6, FlowDay7};
-            return listOfBookingTags;
-        }
+
     }
 }
