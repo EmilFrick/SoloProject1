@@ -42,6 +42,33 @@ namespace Badminton.Repository
             return jsonBookingList;
         }
 
+        static public List<Booking> ReadBookingRepo7Days()
+        {
+
+            string currentPath = Directory.GetCurrentDirectory();
+            StreamReader sr = new StreamReader($@"{currentPath}\BookingsRepo.json");
+            string jsonString = "";
+            List<Booking> jsonBookingList = new List<Booking>();
+
+            using (sr)
+            {
+                while ((jsonString = sr.ReadLine()) != null)
+                {
+                    Booking jsonBooking = JsonConvert.DeserializeObject<Booking>(jsonString);
+                    if (jsonBooking.Court.BookingDate < DateTime.Now.AddDays(7))
+                    {
+                        if (jsonBooking.Court.BookingDate >= DateTime.Today)
+                        {
+                            jsonBookingList.Add(jsonBooking);
+                        }
+                    }
+                }
+                sr.Close();
+            }
+
+            return jsonBookingList;
+        }
+
 
         static public List<Booking> GetBookingsForSpecificActivity(List<Booking> initialList, string courtType)
         {
@@ -68,7 +95,7 @@ namespace Badminton.Repository
             }
             foreach (var item in initialList)
             {
-                if (item.Court.BookingDate.Date == givenDay)
+                if (item.Court.BookingDate.Date.Date == givenDay.Date)
                 {
                     updatedList.Add(item);
                 }
@@ -182,7 +209,7 @@ namespace Badminton.Repository
                     break;
             }
             return listOfBookings;
-        
+
         }
     }
 

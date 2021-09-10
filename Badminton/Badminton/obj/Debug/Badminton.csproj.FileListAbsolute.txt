@@ -47,3 +47,4 @@ C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\Badminton\Badminto
 C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\Badminton\Badminton\obj\Debug\Badminton.csproj.CopyComplete
 C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\Badminton\Badminton\obj\Debug\Badminton.exe
 C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\Badminton\Badminton\obj\Debug\Badminton.pdb
+C:\Users\awiz_\OneDrive\Dokument\Skola\Uppgifter\Mina Projekt\Badminton\Badminton\obj\Debug\Badminton.csproj.AssemblyReference.cache

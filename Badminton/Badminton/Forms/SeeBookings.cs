@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Badminton.Repository;
-using Badminton.Classes;
+using System.Reflection;
 
 namespace Badminton.Forms
 {
@@ -28,8 +28,6 @@ namespace Badminton.Forms
             lblDay6.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(5));
             lblDay7.Text = Classes.Day.GetStrDay(currentWeek.ElementAt(6));
         }
-
-
 
         Label choice;
 
@@ -75,27 +73,18 @@ namespace Badminton.Forms
             else
             {
                 List<Booking> listOfBookings = new List<Booking>();
-                listOfBookings = BookingRepository.ReadBookingRepo();
+                listOfBookings = BookingRepository.ReadBookingRepo7Days();
                 listOfBookings = BookingRepository.GenereateSelectionList(choice, listOfBookings);
-               
-                List<txtToFlowSeeBookings> listOfBookingTags = GenerateListOfBookingTags();
-                List<DateTime> currentWeek = Classes.Day.GenerateWeek();
                 
-                int counter = 0;
-                foreach (var weekDay in currentWeek)
+
+                if (listOfBookings.Count != 0)  //If list contains no items, no idea to run this part of the program.
                 {
-                    List<Booking> listByWeekday = BookingRepository.FetchCertainBookingsByDay(listOfBookings, weekDay);
-                    foreach (var booking in listByWeekday)
-                    {
-                        string tagStr = PopulateFlowItem(booking);
-                        FlowToday.ShowBooking = tagStr;
-                    }
-                    counter++;
+                    PopulateFlowTagsForTheWeek(listOfBookings);
                 }
             }
         }
 
-        private string PopulateFlowItem(Booking booking)
+        private string GenerateFlowTagText(Booking booking)
         {
             string gameType = booking.Court.Type.ToString().Substring(0, 1);
             string courtID = booking.Court.CortNumber.ToString();
@@ -105,16 +94,37 @@ namespace Badminton.Forms
             return bookingText;
         }
 
+        private void PopulateFlowTagsForTheWeek(List<Booking> listOfBookings)
+        {
+            List<txtToFlowSeeBookings> listOfBookingTags = GenerateListOfBookingTags();
+            List<DateTime> currentWeek = Classes.Day.GenerateWeek();
+
+            int counter = 0;
+            foreach (var weekDay in currentWeek)
+            {
+                List<Booking> listByWeekday = BookingRepository.FetchCertainBookingsByDay(listOfBookings, weekDay);
+                foreach (var booking in listByWeekday)
+                {
+                    string tagStr = GenerateFlowTagText(booking);
+                    listOfBookingTags = PopulateFlowTagsWithNewText(listOfBookingTags, tagStr, counter);
+                }
+                counter++;
+            }
+        }
+        private List<txtToFlowSeeBookings> PopulateFlowTagsWithNewText(List<txtToFlowSeeBookings> listOfBookingTags, string tagStr, int counter)
+        {
+            txtToFlowSeeBookings updatedTag = listOfBookingTags.ElementAt(counter);
+            listOfBookingTags.RemoveAt(counter);
+            updatedTag.ShowBooking = tagStr;
+            listOfBookingTags.Insert(counter, updatedTag);
+            return listOfBookingTags;
+        }
+
         private List<txtToFlowSeeBookings> GenerateListOfBookingTags()
         {
             List<txtToFlowSeeBookings> listOfBookingTags = new List<txtToFlowSeeBookings> {FlowToday, FlowDay2,
             FlowDay3, FlowDay4, FlowDay5, FlowDay6, FlowDay7};
             return listOfBookingTags;
         }
-
-
-
-
-
     }
 }
