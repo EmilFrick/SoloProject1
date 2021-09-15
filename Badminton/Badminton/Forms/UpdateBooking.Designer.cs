@@ -42,7 +42,7 @@ namespace Badminton.Forms
             this.lstbListingBookings.ItemHeight = 16;
             this.lstbListingBookings.Location = new System.Drawing.Point(27, 12);
             this.lstbListingBookings.Name = "lstbListingBookings";
-            this.lstbListingBookings.Size = new System.Drawing.Size(338, 132);
+            this.lstbListingBookings.Size = new System.Drawing.Size(515, 132);
             this.lstbListingBookings.TabIndex = 0;
             // 
             // button1
@@ -51,7 +51,7 @@ namespace Badminton.Forms
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Yellow;
-            this.button1.Location = new System.Drawing.Point(223, 150);
+            this.button1.Location = new System.Drawing.Point(400, 150);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 31);
             this.button1.TabIndex = 1;
@@ -60,7 +60,7 @@ namespace Badminton.Forms
             // 
             // btnBackToMainMenu1
             // 
-            this.btnBackToMainMenu1.Location = new System.Drawing.Point(185, 150);
+            this.btnBackToMainMenu1.Location = new System.Drawing.Point(353, 149);
             this.btnBackToMainMenu1.Name = "btnBackToMainMenu1";
             this.btnBackToMainMenu1.Size = new System.Drawing.Size(32, 32);
             this.btnBackToMainMenu1.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace Badminton.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(391, 198);
+            this.ClientSize = new System.Drawing.Size(567, 198);
             this.Controls.Add(this.btnBackToMainMenu1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lstbListingBookings);
